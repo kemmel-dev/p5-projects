@@ -1,28 +1,36 @@
 
-let sketchWidth, sketchHeight;
-let sketchBorderSize = 100;
+var canvasWidth, canvasHeight;
+var sketchWidth, sketchHeight;
+var sketchBorderSize = 50;
 
-let points = [];
-let n = 500;
-let alpha = 137.5;
+var points = [];
+var n = 500;
+var alfa = 137.5;
 
 var scalingParameter = 3;
-var petalDiameter = 4;
+var petalDiameter = 5;
 
-var petalsAdded = 1;
+var petalsAdded = 500;
+
+var panel;
 
 function setup()
 {
 
-    sketchWidth = windowWidth - sketchBorderSize;
-    sketchHeight = windowHeight - sketchBorderSize;
+    canvasWidth = windowWidth - sketchBorderSize;
+    canvasHeight = windowHeight - sketchBorderSize;
 
-    createCanvas(sketchWidth, sketchHeight);
+    createCanvas(canvasWidth, canvasHeight);
+
+    var panelWidth = width / 8;
+    var panelHeight = height;
+    sketchWidth = canvasWidth - panelWidth;
+    sketchHeight = canvasHeight;
+
+    panel = new Panel(sketchWidth, 0, panelWidth, panelHeight, color(125));
 
     angleMode(DEGREES);
-    colorMode(HSB);
-
-    console.log(points);
+    textAlign(CENTER, CENTER);
 }
 
 function addPoint(point){
@@ -31,20 +39,21 @@ function addPoint(point){
 
 function draw() {
     background(0);
-    fill(255);
 
-    translate(width/2, height/2);
-    rotate(n / 2);
+    panel.draw();
 
-    scalingParameter = mouseY / 100.0;
-    petalsAdded = mouseX / 100;
+
+    translate(sketchWidth / 2, sketchHeight/2);
+    rotate(panel.sliderComponent.getValue());
+
+    // scalingParameter = mouseY / 100.0;
+    // petalsAdded = mouseX / 100;
 
     for (let i = 0; i < n; i++) {
-        let phi = i * alpha;
+        let phi = i * alfa;
         let distFromCenter = scalingParameter * sqrt(i);
-        fill(phi % 256, n % 256, 255);
+        fill(255);
         ellipse(distFromCenter * cos(phi), distFromCenter * sin(phi), petalDiameter);
     }
-
-    n++;
+    n++; 
 }
