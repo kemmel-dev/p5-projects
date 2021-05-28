@@ -23,13 +23,14 @@ function setup()
     canvasHeight = windowHeight - sketchBorderSize;
 
     createCanvas(canvasWidth, canvasHeight);
+    colorMode(HSB);
 
     var panelWidth = width / 8;
     var panelHeight = height;
     sketchWidth = canvasWidth - panelWidth;
     sketchHeight = canvasHeight;
 
-    panel = new Panel(sketchWidth, 0, panelWidth, panelHeight, color(125));
+    panel = new Panel(sketchWidth, 0, panelWidth, panelHeight, color(0, 0, 50));
 
     angleMode(DEGREES);
     textAlign(CENTER, CENTER);
@@ -55,7 +56,7 @@ function draw() {
     for (let i = 0; i < n; i++) {
         let phi = i * alfa;
         let distFromCenter = scalingParameter * sqrt(i);
-        fill(255);
+        fill(phi % 256, n % 256, 255);
         ellipse(distFromCenter * cos(phi), distFromCenter * sin(phi), petalDiameter);
     }
     n++; 

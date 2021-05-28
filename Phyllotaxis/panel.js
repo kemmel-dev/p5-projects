@@ -16,7 +16,7 @@ class Panel
         this.components = [];
 
         this.addComponent(new TextComponent(Panel.x, this.getNewComponentY(), Panel.width, Panel.height / 32, "Rotation"));
-        this.rotationSpeedSlider = new SliderComponent(Panel.x, this.getNewComponentY(), Panel.width, Panel.height / 16, 0, 360);
+        this.rotationSpeedSlider = new SliderComponent(Panel.x, this.getNewComponentY(), Panel.width, Panel.height / 16, 0, 25);
         this.addComponent(this.rotationSpeedSlider);
 
         this.addComponent(new TextComponent(Panel.x, this.getNewComponentY(), Panel.width, Panel.height / 32, "Scaling Parameter"));
