@@ -16,8 +16,12 @@ class Panel
         this.components = [];
 
         this.addComponent(new TextComponent(Panel.x, this.getNewComponentY(), Panel.width, Panel.height / 32, "Rotation"));
-        this.sliderComponent = new SliderComponent(Panel.x, this.getNewComponentY(), Panel.width, Panel.height / 16, 0, 360);
-        this.addComponent(this.sliderComponent);
+        this.rotationSpeedSlider = new SliderComponent(Panel.x, this.getNewComponentY(), Panel.width, Panel.height / 16, 0, 360);
+        this.addComponent(this.rotationSpeedSlider);
+
+        this.addComponent(new TextComponent(Panel.x, this.getNewComponentY(), Panel.width, Panel.height / 32, "Scaling Parameter"));
+        this.scalingParameterSlider = new SliderComponent(Panel.x, this.getNewComponentY(), Panel.width, Panel.height / 16, 0, 100);
+        this.addComponent(this.scalingParameterSlider);
     }
 
     mousePressed()

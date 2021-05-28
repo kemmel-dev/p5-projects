@@ -14,6 +14,8 @@ var petalsAdded = 500;
 
 var panel;
 
+var rotationAngle = 0;
+
 function setup()
 {
 
@@ -44,7 +46,8 @@ function draw() {
 
 
     translate(sketchWidth / 2, sketchHeight/2);
-    rotate(panel.sliderComponent.getValue());
+    rotate(rotationAngle += panel.rotationSpeedSlider.getValue());
+    scalingParameter = panel.scalingParameterSlider.getValue();
 
     // scalingParameter = mouseY / 100.0;
     // petalsAdded = mouseX / 100;
@@ -56,4 +59,4 @@ function draw() {
         ellipse(distFromCenter * cos(phi), distFromCenter * sin(phi), petalDiameter);
     }
     n++; 
-}
+}   

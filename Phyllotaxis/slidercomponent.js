@@ -40,6 +40,10 @@ class SliderComponent extends PanelComponent
 
     mousePressed()
     {
-        this.button.x = constrain(mouseX, this.sliderStart, this.sliderEnd);
+        if (mouseY > this.y && mouseY < this.y + this.height)
+        {
+            print(this.y, this.y+ this.height);
+            this.button.x = constrain(mouseX, this.sliderStart, this.sliderEnd);
+        }
     }
 }
